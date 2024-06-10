@@ -1,0 +1,98 @@
+<div class="container">
+    
+        
+        @if(this.authentification.role_name) {
+            <div class="d-flex align-items-center justify-content-between fs-4">
+            <span>Bienvenue : {{this.authentification.utilisateur_firstname }} {{ this.authentification.utilisateur_lastname}}</span>
+            <span>Role :  {{ this.authentification.role_name}}</span>
+            </div>
+            @if(this.authentification.role_name == "Administrateur" ) {
+                
+            
+            <div class="ticket_status">
+                <div class="status_box"><span>Total Tickets</span> <span>{{total_tickets}}</span></div>
+                <div class="status_box"><span>Ticket En cours</span> <span>{{ticket_en_cours}}</span></div>
+                <div class="status_box"><span>Ticket Fermés</span> <span>{{ticket_ferme}}</span></div>
+            </div>
+            }
+            @if(this.authentification.role_name == "Etudiant" || this.authentification.role_name == "Intervenant") {
+
+                <button class="mt-4" mat-raised-button color="primary" [routerLink]="['/add-ticket']">Ajouter un ticket</button>
+            }
+     }
+        @else {
+            
+            <div class="home_page">
+                <h1>MNS Ticketing System</h1>
+                <img src="https://www.manageengine.com/products/service-desk/help-desk-software/images/it-ticketing-system.webp" alt="home page">
+                <h4>Logiciel de système de Ticket informatique pour tout ce qui concerne l'informatique.</h4>
+                <p>Pour connecte:</p>
+                <ul>
+                    <li>Administrateur (admin&#64;mns.fr) mode de pass (admin)</li>
+                    <li>Etudiant (demo1&#64;mns.fr) mode de pass (demo1)</li>
+                    <li>Intervenant (demo2&#64;mns.fr) mode de pass (demo2)</li>
+                </ul>
+                <a mat-raised-button color="primary" routerLink="/connexion">Se connecter</a> 
+            </div>
+            
+
+        }
+    
+
+        
+
+    @if(this.authentification.role_name) {
+        <div class="mat-elevation-z8 mt-3">
+        <table mat-table [dataSource]="list_tickets">
+    
+            <!-- Position Column -->
+            <ng-container matColumnDef="Ticket ID">
+                <th mat-header-cell *matHeaderCellDef class="d-none d-lg-table-cell"> Ticket ID </th>
+                <td mat-cell *matCellDef="let ticket" class=" d-none d-lg-table-cell"> {{ticket.ticket_id}} </td>
+            </ng-container>
+    
+            <!-- Name Column -->
+            <ng-container matColumnDef="Title">
+                <th mat-header-cell *matHeaderCellDef> Title </th>
+                <td mat-cell *matCellDef="let ticket"> {{ticket.ticket_title}} </td>
+            </ng-container>
+    
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Date">
+                <th mat-header-cell *matHeaderCellDef> Date </th>
+                <td mat-cell *matCellDef="let ticket"> {{ticket.ticket_date_created}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Date_fermeture">
+                <th mat-header-cell *matHeaderCellDef> Date_fermeture </th>
+                <td mat-cell *matCellDef="let ticket"> 
+                    @if (ticket.ticket_status == "0"){
+                        {{ticket.ticket_date_closed}}
+                    } </td>
+            </ng-container>
+    
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef > Status </th>
+                <td mat-cell *matCellDef="let ticket" > 
+                @if (ticket.ticket_status == "1"){
+                    <b class="text-warning">En cours</b>
+                }@else if (ticket.ticket_status == "0"){
+                    <b class="text-success">Fermé</b>
+                }
+                </td>
+            </ng-container>
+    
+            
+    
+            <tr mat-header-row *matHeaderRowDef="tabletd"></tr>
+            <tr mat-row *matRowDef="let row; columns: tabletd;" class="table_click" (click)="onTableClick(row)"></tr>
+        </table>
+    
+        <mat-paginator [length]="list_tickets.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select page">
+        </mat-paginator>
+    </div>
+    }
+    
+</div>

@@ -1,1 +1,2 @@
-# ticket_support
+# Ticket Support System
+Un outil de ticketing est un logiciel destiné à gérer les demandes des clients. L'outil de ticketing est connecté à tous les canaux de communication utilisés par une entreprise.

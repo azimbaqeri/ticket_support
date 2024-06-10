@@ -1,0 +1,62 @@
+<div class="container">
+
+    <div class="d-block m-auto w-50 text-center">
+
+        <h3 class="my-5">Ajouter un nouvel utilisateur</h3>
+
+        <form [formGroup]="formulaire" (ngSubmit)="onSumit()" class="d-flex flex-column">
+            <mat-form-field>
+                <mat-label>Email:</mat-label>
+                <input matInput formControlName="utilisateur_email" type="email" placeholder="Ex. John.doe@stagiaire.mns.fr">
+        
+                @if (formulaire.get("utilisateur_email")?.hasError("required")) {
+                <mat-error>Le champs est obligatoire </mat-error>
+                }
+        
+                @if (formulaire.get("emautilisateur_emailil")?.hasError("utilisateur_email")) {
+                <mat-error>L'email n'est pas valide </mat-error>
+                }
+        
+                @if (formulaire.get("utilisateur_email")?.hasError("utilisateur_email")) {
+                <mat-error>L'email n'est pas valide apre l'stagiaire.mns.fr </mat-error>
+                }
+        
+            </mat-form-field>
+        
+            <mat-form-field>
+                <mat-label>Mote de passe:</mat-label>
+                <input matInput formControlName="utilisateur_password" type="password">
+                <mat-error>Le champs est obligatoire </mat-error>
+            </mat-form-field>
+        
+            <mat-form-field>
+                <mat-label>Nom:</mat-label>
+                <input matInput formControlName="utilisateur_lastname" type="text" placeholder="Ex. Doe">
+                <mat-error>Le champs est obligatoire </mat-error>
+            </mat-form-field>
+        
+         <mat-form-field>
+                <mat-label>Prenom:</mat-label>
+                <input matInput formControlName="utilisateur_firstname" type="text" placeholder="Ex. John">
+                <mat-error>Le champs est obligatoire </mat-error>
+            </mat-form-field> 
+        
+            <mat-form-field>
+                <mat-label>Utilisateur Rôle:</mat-label>
+                <mat-select formControlName="role_name">
+                    @for (role of roleLists; track role) {
+                    <mat-option [value]="role">{{role}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field> 
+        
+            <button mat-raised-button color="primary" type="submit">{{button_text}}</button>
+        
+        </form>
+
+
+
+    </div>
+
+
+</div>

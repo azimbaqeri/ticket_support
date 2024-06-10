@@ -1,0 +1,186 @@
+/* You can add global styles to this file, and also import other style files */
+
+.active_link{
+    all: unset;
+    border-bottom: 1px  solid #f2f2f2!important;
+    border-radius: 0px !important;
+    color: #FFFFFF !important;
+    
+    
+}
+//--------------------------Ticket Message Start    ---------------------------
+.write_message{
+    background-color: #cba2a2 !important;
+    color: #FFFFFF !important;
+    border-radius: 5px;
+    padding: 40px;
+    margin-top: 20px;
+}
+.message{
+
+    background-color: #685c5c !important;
+    color: #FFFFFF !important;
+    padding: 40px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: #1d1c1c 5px 5px 15px;
+}
+.msg_admin{
+    flex-direction: column;
+    text-align: left;
+    color: #ad0d0d !important;
+    margin: 20 0px;
+    margin-block: 30px;
+    & .title {
+            display: inline;
+            padding: 10px;
+            background-color: #9a4064;
+            color: #FFFFFF;
+            border-radius: 10px 10px 10px 0px;
+        }
+    
+        & .text {
+            padding: 15px;
+            
+            background-color: #9a4064;
+            color: #FFFFFF;
+            border-radius: 0px 10px 10px 10px;
+        }
+}
+.msg_user {
+    text-align: right;
+    color: #3760db !important;
+    margin: 20 0px;
+    margin-block: 30px;
+    & .title{
+        display: inline;
+        padding: 10px;
+        background-color: #a16a80;
+        color: #FFFFFF;
+        border-radius: 10px 10px 0px 0px;
+    }
+    & .text{
+        padding: 15px;
+        text-align: left;
+        background-color: #a16a80;
+            color: #FFFFFF;
+        border-radius: 10px 0px 10px 10px;
+    }
+}
+//--------------------------Ticket Message end    ---------------------------
+
+.home_page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+
+}
+.navbar{
+    background-color: #c2185b!important;
+    color: #FFFFFF !important;
+    padding: 20px;
+    .logo{
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+    
+}
+.login{
+    max-width: 100%;
+    margin: auto;
+}
+.deconnect{
+    cursor: pointer;
+}
+.table_click{
+    cursor: pointer;
+    
+}
+.table_click:hover{
+    background-color: #c2185b !important;
+}
+.form-control{
+    background-color: #424242 !important;
+    color: #FFFFFF !important;
+    margin-top: 80px;
+    padding: 30px;
+    border: none;
+    box-shadow: #1d1c1c 5px 5px 15px;
+}
+.btn-warn{
+    background-color: #c2185b !important;
+}
+.nav-link{
+    all: unset;
+    color: #FFFFFF !important;
+    margin: 0 20px;
+    cursor: pointer;
+    padding: 10px;
+   
+}
+
+.site-title{
+    color: #FFFFFF !important;
+}
+.snack-bar-success .mdc-snackbar__label {
+    color: #FFFFFF !important;
+}
+.snack-bar-success .mdc-button__label{
+    color: #FFFFFF !important;
+}
+.snack-bar-success .mdc-snackbar__surface {
+    background-color: #c2185b!important;
+   
+}
+
+.ticket_status{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0px;
+    gap: 20px;
+    & .status_box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        border: #c2185b 1px solid;
+        padding: 30px;
+        background-color: #c2185b;
+        border-radius: 10px;
+        & span:last-of-type{
+            color: #FFFFFF !important;
+            font-size: 32px;
+        }
+    }
+}
+
+.main_page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main_content {
+    flex: 1;
+}
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+@media screen and (min-width: 578px) {
+    .login {
+            max-width: 50%;
+            margin: auto;
+        }
+}

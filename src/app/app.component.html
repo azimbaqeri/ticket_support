@@ -1,0 +1,88 @@
+<div class="main_page">
+
+
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom bg-light navbar">
+    <a routerLink="/home" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32">
+            <use xlink:href="#bootstrap"></use>
+        </svg>
+        <img src="/assets/img/logo.png" alt="" class="logo">
+        <span class="fs-4 site-title">MNS Ticketing System
+
+        </span>
+    </a>
+
+
+    <ul class="nav nav-pills">
+        <li class="nav-item  d-flex row text-center">
+            <a routerLink="/home" routerLinkActive="active_link" class="nav-link">
+                <span class="material-symbols-outlined d-lg-none d-md-block " title="Page d'accueil">home</span>
+                @if(this.authentification.role_name){
+                    <span class="text d-md-none d-none d-lg-block">Espace Personnel </span>
+                }@else {
+                    <span class="text d-md-none d-none d-lg-block">Accueil </span>
+                }
+                
+            </a>
+
+        </li>
+
+
+
+        @if (this.authentification.role_name== "Administrateur" || this.authentification.role_name== "Intervenant") {
+        <li class="nav-item  d-flex row text-center">
+            <a routerLink="/manage-user" routerLinkActive="active_link" class="nav-link">
+                <span class="material-symbols-outlined d-lg-none d-md-block "
+                    title="Gestion des utilisateurs">group</span>
+                <span class="text d-md-none d-none d-lg-block">Utilisateurs</span>
+            </a>
+
+        </li>
+        }
+        
+        <li class="nav-item  d-flex row text-center">
+            @if (this.authentification.role_name) {
+
+            <a routerLinkActive="active_link" class="nav-link deconnect" (click)="onDeconnexion()">
+                <span class="material-symbols-outlined" title="Se déconnecter">logout</span>
+                
+            </a>
+
+            } @else {
+
+            <a routerLink="/connexion" routerLinkActive="active_link" class="nav-link">
+                <span class="material-symbols-outlined" title="Se connecter">Login</span>
+            </a>
+
+            }
+        </li>
+    </ul>
+</header>
+
+<div class="main_content">
+<router-outlet></router-outlet>
+</div>
+
+
+
+
+<footer class="d-flex flex-column flex-lg-row justify-content-between align-items-center p-3 mt-5 border-top">
+    
+    <ul class="nav justify-content-center">
+
+      <li class="nav-item"><a [routerLink]="['/home']" class="nav-link text-body-secondary">
+        @if(this.authentification.role_name){
+        Espace Personnel
+        }@else {
+        Accueil
+        }
+    </a></li>
+      @if(this.authentification.role_name== "Administrateur" || this.authentification.role_name== "Intervenant") {
+        <li class="nav-item"><a [routerLink]="['/manage-user']" class="nav-link text-body-secondary">Utilisateurs</a></li>
+      }
+      
+    </ul>
+    <p class="text-center text-white">© 2024 MNS Ticketing System , Inc</p>
+  </footer>
+
+</div>

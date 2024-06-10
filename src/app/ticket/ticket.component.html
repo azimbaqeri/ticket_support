@@ -1,0 +1,67 @@
+<div class="container">
+    @if (list_tickets.length > 0){
+    <h3 class="text-center">
+        
+            {{list_tickets[0].ticket_title}}
+        
+    </h3>
+    <div class="d-flex justify-content-between align-items-center">
+        @if (list_tickets[0].ticket_status == "1" && authentification.role_name == "Administrateur") {
+        <a mat-raised-button color="primary" (click)="fermer_ticket()">Fermer le ticket</a>
+        } @else {
+        <button mat-raised-button color="primary" [routerLink] = "['/home']">Liste des tickets</button>
+        }
+        @if(list_tickets[0].ticket_status == "0" && authentification.role_name == "Administrateur") {
+            <a mat-raised-button color="primary" (click)="suprimer_ticket()">Suprimer le ticket</a>
+        }
+        
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between align-items-center">
+    <span>Date de création du ticket | <b> <span class="text-success"> {{list_tickets[0].ticket_date_created}}</span> </b></span>
+    <span>Ticket Status |  
+        @if (list_tickets[0].ticket_status == "1"){
+        <b class="text-warning">En cours</b>
+        }@else if (list_tickets[0].ticket_status == "0"){
+        <b class="text-success">Fermé</b>
+        }
+        </span>
+    </div>
+    <div class="message mt-4">
+        @for(message of list_tickets; track $index){
+            
+
+            @if(message.message_created_by_id == authentification.utilisateur_id){
+                <div class="msg_admin">
+                <span class="title">{{message.utilisateur_firstname}} ( {{authentification.role_name}} )</span> 
+                <div class="text">{{message.message_text}}</div>
+                </div>
+            }@else {
+                <div class="msg_user">
+                <span class="title">{{message.utilisateur_firstname}} ( {{message.role_name}} )</span>
+                <div class="text">{{message.message_text}}</div>
+                </div>
+            }
+
+        }
+    </div>
+
+    <div class="write_message" >
+        <form class="example-form" [formGroup]="message_form" (ngSubmit)="onSubmit()">
+            <mat-form-field class="w-100">
+                <mat-label>Message</mat-label>
+                <textarea matInput formControlName="message_text" placeholder="Ex. It makes me feel..." rows="5"></textarea>
+            </mat-form-field>
+            @if (list_tickets[0].ticket_status == "1") {
+                <button mat-raised-button color="primary" type="submit">Envoyer</button>
+            } @else {
+                <button mat-raised-button color="primary" disabled="disabled" formArrayName="message_button">Envoyer</button>
+            }
+            
+            
+        </form>
+    </div>
+    }
+</div>
+
+

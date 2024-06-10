@@ -1,0 +1,20 @@
+<div class="container">
+    <h3>Ajouter un ticket</h3>
+    <div class="write_message">
+    <form (ngSubmit)="onSubmit()" [formGroup]="addTicket">
+            <mat-form-field MatFormFieldControl class="w-100">
+                <mat-label>Titre de ticket</mat-label>
+                <input matInput  placeholder="Ex. Titre du ticket" formControlName="ticket_title">
+                <mat-error>le titre est obligatoire</mat-error>
+            </mat-form-field>
+            <mat-form-field MatFormFieldControl class="w-100">
+                <mat-label>Description de ticket</mat-label>
+                <textarea matInput placeholder="Ex. Description du ticket" formControlName="ticket_description" rows="5"></textarea>
+                <mat-error>la description est obligatoire</mat-error>
+            </mat-form-field>
+            
+
+            <button mat-raised-button color="primary" type="submit">Ajouter</button>
+    </form>
+    </div>
+</div>
