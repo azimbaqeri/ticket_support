@@ -3,14 +3,14 @@ require_once 'header_init.php';
 require_once 'extraction_jwt.php';
 
 // cette requête permet d'ajouter un message dans la base de données main avec limitation de 5 messages par ticket
-// $sql = "SELECT count(*) as num FROM message";
-// $stmt = $db->prepare($sql);
-// $stmt->execute();
-// $row  = $stmt->fetch();
+$sql = "SELECT count(*) as num FROM message";
+$stmt = $db->prepare($sql);
+$stmt->execute();
+$row  = $stmt->fetch();
 
-// if ($row["num"] >= 5) {
-//     exit;
-// }
+if ($row["num"] >= 5) {
+    exit;
+}
 
 
 $json = file_get_contents('php://input');

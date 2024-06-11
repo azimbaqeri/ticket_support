@@ -20,8 +20,8 @@ export class ConnexionComponent {
   generateurFormulaire: FormBuilder = inject(FormBuilder);
 
   formulaire: FormGroup = this.generateurFormulaire.group({
-    utilisateur_email: ['root@mns.fr', [Validators.required, Validators.email]],
-    utilisateur_password: ['root', [Validators.required]]
+    utilisateur_email: ['', [Validators.required, Validators.email]],
+    utilisateur_password: ['', [Validators.required]]
   })
   resultat: string[] = [];
   welcome: string = "";
@@ -34,20 +34,30 @@ export class ConnexionComponent {
     if (this.formulaire.valid) {
 
       this.http.post<any>('http://localhost/back_angular/ticket_back/login.php', this.formulaire.value)
-        .subscribe(data => {
-          localStorage.setItem('jwt', data.jwt);
-          
-          this.authentification.connexion();
+        .subscribe({
+          next: (data) => {
+            localStorage.setItem('jwt', data.jwt);
 
-          this.router.navigate(['/home']);
-          this.snackBar.open("Vous vous êtes connecté avec succès", undefined, {
-            duration: 3000,
-            horizontalPosition: 'center',
-            verticalPosition: 'bottom',
-            panelClass: 'snack-bar-success',
-          });
+            this.authentification.connexion();
 
-        })
+            this.router.navigate(['/home']);
+            this.snackBar.open("Vous vous êtes connecté avec succès", undefined, {
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+              panelClass: 'snack-bar-success',
+            });
+          },
+          error: (error) => {
+            console.log(error);
+            this.snackBar.open("Identifiants incorrects", undefined, {
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+              panelClass: 'snack-bar-success',
+            });
+          }
+          })
 
 
       //   this.http.get('http://localhost/back_angular/login.php?email='+this.formulaire.value.email+'&password='+this.formulaire.value.password)

@@ -78,6 +78,16 @@
     text-align: center;
 
 }
+.home_page div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
 .navbar{
     background-color: #c2185b!important;
     color: #FFFFFF !important;
@@ -144,20 +154,21 @@
     align-items: center;
     justify-content: center;
     margin: 30px 0px;
-    gap: 20px;
+    gap: 10px;
     & .status_box{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        text-align: center;
         gap: 20px;
         border: #c2185b 1px solid;
-        padding: 30px;
+        padding: 10px;
         background-color: #c2185b;
         border-radius: 10px;
         & span:last-of-type{
             color: #FFFFFF !important;
-            font-size: 32px;
+            font-size: 24px;
         }
     }
 }

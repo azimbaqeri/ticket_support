@@ -4,14 +4,14 @@ require_once 'extraction_jwt.php';
 
 
 // cette requête permet d'ajouter un message dans la base de données main avec limitation de 5 utilisateurs
-// $sql = "SELECT count(*) as num FROM utilisateur";
-// $stmt = $db->prepare($sql);
-// $stmt->execute();
-// $row  = $stmt->fetch();
+$sql = "SELECT count(*) as num FROM utilisateur";
+$stmt = $db->prepare($sql);
+$stmt->execute();
+$row  = $stmt->fetch();
 
-// if ($row["num"] >= 5) {
-//     exit;
-// }
+if ($row["num"] >= 5) {
+    exit;
+}
 
 $json = file_get_contents('php://input');
 $utilisateur = json_decode($json);
@@ -46,7 +46,7 @@ $stmt = $db->prepare($sql);
     $stmt->bindValue(':utilisateur_role_id', $role_id, PDO::PARAM_INT);
     $stmt->execute();
 
-echo '{"message" : "Utilisateur ajouté"}';
+echo '{"message" : "l\'utilisateur a été ajouté"}';
 http_response_code(201);
 
 //debagdumpparams

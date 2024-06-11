@@ -57,7 +57,11 @@ export class ManageUserComponent {
 
         },
         error: (error) => {
-          console.log(error);
+          
+          this.snackBar.open(error.error.message, undefined, {
+            duration: 3000,
+            panelClass: 'snack-bar-success',
+          });
         }
       })
   }

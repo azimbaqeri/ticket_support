@@ -20,11 +20,11 @@ if ($utilisateur->role_name != "Administrateur") {
 $utilisateur_id = $_GET['utilisateur_id'];
 
 // cette requête permet d'ajouter un message dans la base de données main avec limitation de modification
-// if ($utilisateur_id == 1 || $utilisateur_id == 2 || $utilisateur_id == 3) {
-//     echo '{"message" : "Vous ne pouvez pas modifier cet utilisateur"}';
-//     http_response_code(403);
-//     exit;
-// } 
+if ($utilisateur_id == 1 || $utilisateur_id == 2 || $utilisateur_id == 3) {
+    echo '{"message" : "Vous ne pouvez pas modifier cet utilisateur"}';
+    http_response_code(403);
+    exit;
+}
 
 
 $json = file_get_contents('php://input');
@@ -41,13 +41,17 @@ if (!$utilisateur_exist) {
     exit;
 }
 
-$role_id = $utilisateur_exist['role_id'];
-
-if(empty($utilisateur->utilisateur_password)){
+if (empty($utilisateur->utilisateur_password)) {
     $passwordHash = $utilisateur_exist['utilisateur_password'];
-}else{
+} else {
     $passwordHash = password_hash($utilisateur->utilisateur_password, PASSWORD_DEFAULT);
 }
+
+$sql = "SELECT role_id FROM role WHERE role_name = :role_name";
+$stmt = $db->prepare($sql);
+$stmt->execute([':role_name' => $utilisateur->role_name]);
+$role = $stmt->fetch(PDO::FETCH_ASSOC);
+$role_id = $role['role_id'];
 
 
 $sql = "UPDATE utilisateur SET utilisateur_email=:utilisateur_email, utilisateur_password=:utilisateur_password, utilisateur_firstname =:utilisateur_firstname, utilisateur_lastname =:utilisateur_lastname, utilisateur_role_id =:utilisateur_role_id WHERE utilisateur_id = :utilisateur_id";
@@ -62,7 +66,6 @@ $stmt->bindValue(':utilisateur_role_id', $role_id, PDO::PARAM_INT);
 $stmt->bindValue(':utilisateur_id', $utilisateur_id, PDO::PARAM_INT);
 $stmt->execute();
 
-echo '{"message" : "Utilisateur modifié"}';
+echo '{"message" : "l\'utilisateur a été mis à jour"}';
 http_response_code(201);
-
-//debagdumpparams
+exit;

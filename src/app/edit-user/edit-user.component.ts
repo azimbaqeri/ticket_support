@@ -89,8 +89,11 @@ export class EditUserComponent {
         .post(url, this.formulaire.value
         )
         .subscribe({
-          next: (resultat) => {
-            this.snackBar.open("L'utilisateur a bien été ajouté", undefined, {
+          next: (resultat:any) => {
+            console.log();
+            
+            
+            this.snackBar.open(resultat.message, undefined, {
               duration: 3000,
               horizontalPosition: 'center',
               verticalPosition: 'bottom',
@@ -99,8 +102,13 @@ export class EditUserComponent {
 
             this.router.navigateByUrl('/manage-user');
           },
-          error: (resultat) =>
-            alert('Erreur inconnue contactez votre administrateur'),
+          error: (error) =>
+            this.snackBar.open(error.error.message, undefined, {
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+              panelClass: 'snack-bar-success',
+            }),
         });
     }
 
