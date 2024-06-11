@@ -1,3 +1,66 @@
+## Version French
+# Système de Support de Ticket
+
+## Vue d'ensemble
+
+Le Système de Support de Ticket est une application web qui permet aux utilisateurs de créer et de gérer des tickets de support. Il offre une interface utilisateur conviviale pour les utilisateurs de créer des tickets, de les attribuer à des utilisateurs ou des équipes spécifiques, et de communiquer efficacement avec l'équipe de support ou d'autres utilisateurs.
+
+## Fonctionnalités
+
+### Authentification des utilisateurs
+
+- Les utilisateurs peuvent créer de nouveaux comptes en fournissant leur adresse e-mail, mot de passe et d'autres informations nécessaires.
+- Les utilisateurs peuvent se connecter en utilisant leurs informations d'identification pour accéder au système de support de ticket.
+- Les utilisateurs peuvent se déconnecter du système pour assurer la sécurité de leur compte.
+
+### Création de tickets
+
+- Les utilisateurs peuvent créer de nouveaux tickets en fournissant un titre, une description et tout autre document pertinent.
+- Les utilisateurs peuvent choisir la priorité et la catégorie du ticket pour les catégoriser et les prioriser les demandes de support.
+- Les utilisateurs peuvent attribuer le ticket à des utilisateurs ou des équipes spécifiques pour une action ultérieure.
+
+### Gestion des tickets
+
+- Les utilisateurs peuvent afficher leurs propres tickets, y compris l'état, la priorité et l'utilisateur assigné.
+- Les utilisateurs peuvent mettre à jour les détails de leurs propres tickets, tels que le titre, la description ou les pièces jointes.
+- Les utilisateurs peuvent fermer leurs propres tickets lorsque le problème est résolu.
+
+### Recherche et filtrage des tickets
+
+- Les utilisateurs peuvent effectuer une recherche de tickets en fonction de critères tels que le titre du ticket, l'état, la priorité ou l'utilisateur assigné.
+- Les utilisateurs peuvent filtrer les tickets en fonction de leurs préférences, tels que le tri par date ou par priorité.
+
+### Communication des tickets
+
+- Les utilisateurs peuvent afficher et répondre aux messages à l'intérieur du ticket, ce qui permet une communication efficace avec l'équipe de support ou d'autres utilisateurs.
+
+## Technologies utilisées
+
+- Angular : Le projet est construit à l'aide d'Angular, un framework JavaScript populaire pour la construction d'applications web.
+- Angular Material : Le projet utilise Angular Material, une bibliothèque de composants d'interface utilisateur qui fournit un ensemble de composants Material Design pour les applications Angular.
+- TypeScript : Le projet est écrit en TypeScript, un superensemble typé de JavaScript qui ajoute la typographie et d'autres fonctionnalités au langage.
+- SCSS : Le projet utilise SCSS (Sassy CSS) pour le style, qui permet des styles imbriqués, des variables et des mixins.
+- Firebase : Le projet peut intégrer Firebase pour l'authentification des utilisateurs et d'autres services backend.
+- MySQL : Le projet peut utiliser MySQL comme système de gestion de base de données pour stocker les données des tickets.
+
+## Prise en main
+
+Pour commencer avec le Système de Support de Ticket, suivez ces étapes :
+
+1. Clonez le dépôt.
+2. Installez les dépendances en exécutant `npm install`.
+3. Exécutez l'application en exécutant `ng serve`.
+4. Ouvrez votre navigateur et accédez à `http://localhost:4200` pour accéder à l'application.
+
+## Contribution
+
+Les contributions sont les bienvenues ! Si vous souhaitez contribuer au Système de Support de Ticket, suivez ces instructions :
+
+
+
+
+## Version English
+
 # Ticket Support System
 
 ## Overview
@@ -60,7 +123,3 @@ Contributions are welcome! If you would like to contribute to the Ticket Support
 3. Make your changes and commit them.
 4. Push your branch to your forked repository.
 5. Create a pull request to the main repository.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
